@@ -6,6 +6,7 @@
 
 from random import randint
 
+print()
 n = int (input("Введите количество моенток "))
 count_0 = 0
 count_1 = 0
@@ -19,8 +20,10 @@ for i in coins:
         count_0+=1
     else:
         count_1+=1
-
+print()
 if count_0<count_1:
     print(count_0)
 else:
     print(count_1)
+
+print()
