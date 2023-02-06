@@ -53,3 +53,5 @@ for i in word:
             sum += key
 
 print(f"Стоимость введенного слова {sum} очков")
+
+print()
