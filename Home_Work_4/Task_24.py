@@ -14,6 +14,8 @@
 # Кусты увеличиваются в арифметической прогрессии. 
 # Чтобы выдать ответ нужно найти максимальную сумму элемента списка с его левым и правым соседями
 
+from random import randint
+
 print()
 n = int(input('Введите количество кустов '))
 
@@ -21,18 +23,21 @@ a=list()
 
 
 for i in range(n):
-    a.append(i+1)
+    # a.append(i+1)
+    a.append(randint(10, 99))
 
 print("\nВсего ягод на кустах", a)
 
-sum=0
-res=0
+sum= a[-1]+a[-2]+a[0]
+res= 0
+print('\nstart sum=', sum)
 
 for i in range(len(a)-1):
     for j in range(len(a)-i-1):
         res=a[j-1]+a[j]+a[j+1]
         if res>sum:
             sum=res
+
 
 print()
 print(f'Максимальное количество ягод, которые соберет модуль {sum}\n')
