@@ -1,4 +1,5 @@
 from random import *
+import telebot
 import json
 
 films = []
@@ -9,20 +10,20 @@ bot_commands = ['/start', '/stop', '/add',
 def save():
     with open("films.json", 'w', encoding='utf-8') as ts:
         ts.write(json.dumps(films, ensure_ascii=False))
-        # print('Список фильмов сохранен в файл')
 
 
-# def load():
-#     with open("films.json", 'r', encoding='utf-8') as tr:
-#         films=json.load(tr)
-#     print('Фильмы из файла загружены')
 
-# Пока не придумал как наладить эту функцию
-    
-try:
+def load():
+    global films
     with open("films.json", 'r', encoding='utf-8') as tr:
         films=json.load(tr)
-        print('Список фильмов успешно загружен')
+    
+# API_TOKEN='СЮДА ВСТАВЬТЕ ВАШ ТОКЕН ОТ BOTFATHER'
+# bot = telebot.TeleBot(API_TOKEN)
+    
+try:
+    load()
+    print('Список фильмов успешно загружен')
 except:
     print('Нет сохраненного файла')
 
@@ -39,8 +40,7 @@ while True:
             print ('Бот остановлен \nСписок фильмов сохранен')
         break
     elif command == '/show':
-        with open("films.json", 'r', encoding='utf-8') as tr:
-            films=json.load(tr)
+        load()
         print('Сейчас в списке следующие фильмы: ')
         for i in films:
             print(i)
