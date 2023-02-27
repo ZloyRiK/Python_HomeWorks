@@ -23,9 +23,12 @@ def change(id):
             n+=1
             print(f'Номер {n}: {i}')
         phone_id=int(input('Выберите id номера телефона для изменения: '))
-        new_value = input('Введите новое значение: ')
-        directory[id]['Телефон'].pop(phone_id-1)
-        directory[id]['Телефон'].insert(phone_id-1, new_value)
+        new_value = input('Введите новое значение или оставьте поле пустым для удаления номера: ')
+        if new_value == '':
+            directory[id]['Телефон'].pop(phone_id-1)
+        else:
+            directory[id]['Телефон'].pop(phone_id-1)
+            directory[id]['Телефон'].insert(phone_id-1, new_value)
     elif value == 'Добавить':
         new_value = input('Введите номер для добавления: ')
         directory[id]['Телефон'].append(new_value)
